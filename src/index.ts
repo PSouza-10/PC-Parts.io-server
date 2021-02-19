@@ -14,6 +14,8 @@ class App implements IApp {
 
 	constructor() {
 		this.express = express()
+		this.middleware()
+		this.routes()
 	}
 
 	middleware() {

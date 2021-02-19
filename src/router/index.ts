@@ -2,8 +2,8 @@ import { Router } from 'express'
 
 const router = Router()
 
-router.use('/account', (req, res) => {
-	res.send('Hello')
+router.use('/', (req, res) => {
+	return res.send('Hello')
 })
 
 export default router
