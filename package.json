@@ -10,10 +10,13 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@types/express": "^4.17.11",
+    "@types/morgan": "^1.9.2",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "3.3.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -27,5 +30,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
   }
 }
