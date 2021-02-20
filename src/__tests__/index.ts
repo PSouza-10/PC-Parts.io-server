@@ -11,6 +11,12 @@ describe('GET endpoint works', () => {
 		expect(res.text).toEqual('Hello')
 		expect(res.status).toEqual(200)
 	})
+
+	it('Should return my email', async () => {
+		const email = 'paulosouza300272@gmail.com'
+		const res = await agent(app).post('/').send({ email })
+		expect(res.body.email).toEqual(email.split('').reverse().join(''))
+	})
 })
 
 afterAll(async () => {
