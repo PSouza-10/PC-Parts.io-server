@@ -1,13 +1,8 @@
 import { Router } from 'express'
-
+import productRouter from './product'
+import accountRouter from './account'
 const router = Router()
 
-router.get('/account', (req, res) => {
-	return res.send('Hello')
-})
-router.post('/', (req, res) => {
-	const email = req.body.email
-
-	return res.send({ email: email.split('').reverse().join('') })
-})
+router.get('/account', accountRouter)
+router.post('/product', productRouter)
 export default router

@@ -1,1 +1,0 @@
-export { logRequest } from './logRequest'

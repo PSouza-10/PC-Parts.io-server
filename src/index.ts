@@ -1,8 +1,9 @@
 import express, { Express } from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
-import { logRequest } from './utils'
+import { logRequest } from './middleware'
 import router from './router'
+import mongo from 'mongoose'
 interface IApp {
 	express: Express
 	middleware: () => void
@@ -15,6 +16,7 @@ class App implements IApp {
 	constructor() {
 		this.express = express()
 		this.middleware()
+		this.database()
 		this.routes()
 	}
 
@@ -23,7 +25,17 @@ class App implements IApp {
 		this.express.use(cors())
 		this.express.use(morgan(logRequest, { immediate: false }))
 	}
-	database() {}
+	database() {
+		if (process.env.NODE_ENV === 'production') {
+		}
+
+		mongo
+			.connect('mongodb://localhost:27017/pcparts', {
+				useNewUrlParser: true,
+				useUnifiedTopology: true,
+			})
+			.then(() => console.log('MongoDB connected on local PORT 27017'))
+	}
 	routes() {
 		this.express.use(router)
 	}
