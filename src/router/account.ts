@@ -1,15 +1,16 @@
 import { Router } from 'express'
 import { account } from '../controller'
-import { auth } from '../middleware'
+import passport from 'passport'
 const router = Router()
 
-router.post('/register', account.register)
-router.post('/login', account.login)
-router.post('/forgot', account.forgot)
-
-router.get('/', auth, account.refresh)
-
-router.put('/reset-password', auth, account.resetPassword)
-router.put('/', auth, account.setInfo)
+router.get(
+	'/google',
+	passport.authenticate('google', { scope: 'profile', session: false })
+)
+router.get(
+	'/google/callback',
+	passport.authenticate('google', { session: false }),
+	account.authenticate
+)
 
 export default router

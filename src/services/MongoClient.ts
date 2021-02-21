@@ -1,18 +1,23 @@
 import { MongoMemoryServer } from 'mongodb-memory-server'
+import mongoose from 'mongoose'
 
-interface ITestDB {
-	server: MongoMemoryServer
-}
+const mongoServer = new MongoMemoryServer()
 
-class TestDB implements ITestDB {
-	server: MongoMemoryServer
-	constructor() {
-		this.server = new MongoMemoryServer({ autoStart: true })
+export const dbConnect = async () => {
+	const uri = await mongoServer.getUri()
+
+	const mongooseOpts = {
+		useNewUrlParser: true,
+		useUnifiedTopology: false,
+		useCreateIndex: true,
+		useFindAndModify: true,
 	}
 
-	async getAdress() {
-		return await this.server.getUri()
-	}
+	await mongoose.connect(uri, mongooseOpts)
 }
 
-export default TestDB
+export const dbDisconnect = async () => {
+	await mongoose.connection.dropDatabase()
+	await mongoose.connection.close()
+	await mongoServer.stop()
+}
