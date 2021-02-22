@@ -3,14 +3,10 @@
   "version": "1.0.0",
   "author": "PSouza-10 <paulosouza300272@gmail.com>",
   "license": "MIT",
-  "main" : "build/index.js",
   "scripts": {
-    "start" : "node build/index.js",
-    "build" : "npx tsc",
-    "start-dev": "ts-node index.ts",
-    "postinstall": "yarn husky install ",
-    "test": "yarn jest --watch",
-    "heroku-postbuild" : "npm install && npx tsc"
+    "start": "ts-node index.ts",
+    "postinstall": "yarn husky install",
+    "test": "yarn jest --watch"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -54,8 +50,5 @@
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-google-oauth2": "^0.2.0"
-  },
-  "engines" : {
-    "node" : "14.15.5"
   }
 }
