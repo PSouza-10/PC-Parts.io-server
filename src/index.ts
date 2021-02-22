@@ -20,9 +20,8 @@ class App implements IApp {
 	constructor() {
 		this.express = express()
 
-		this.database().then(() =>
-			console.log('MongoDB connected on local PORT 27017')
-		)
+		this.database()
+
 		this.middleware().then(() => console.log('Middleware set up'))
 		this.routes().then(() => console.log('Routes Initialized'))
 	}
@@ -35,13 +34,16 @@ class App implements IApp {
 		passport.use(passportConfig)
 	}
 	async database() {
-		if (process.env.NODE_ENV === 'development') {
+		if (process.env.NODE_ENV !== 'test') {
+			mongo
+				.connect(process.env.MONGO_URI, {
+					useNewUrlParser: true,
+					useUnifiedTopology: true,
+					useFindAndModify: false,
+				})
+				.then(() => console.log('MongoDB connected to Atlas'))
+				.catch(() => console.log('Error on MongoDB Connect'))
 		}
-		mongo.connect('mongodb://localhost:27017/pcparts', {
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-			useFindAndModify: true,
-		})
 	}
 	async routes() {
 		this.express.use(router)

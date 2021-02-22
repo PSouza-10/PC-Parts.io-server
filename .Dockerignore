@@ -1,0 +1,11 @@
+node_modules
+src/__tests__/*
+nodemon.json
+.eslintrc
+.prettierrc
+yarn.lock
+jest.config.js
+.husky
+build
+.git
+*.md
