@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node build/index.js",
     "start-dev": "ts-node index.ts",
+    "start-watch": "nodemon",
     "build": "npx tsc",
     "test": "yarn jest --watch"
   },
