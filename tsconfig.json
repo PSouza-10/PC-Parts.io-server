@@ -1,5 +1,7 @@
 {
 	"compilerOptions": {
-		"esModuleInterop": true
-	}
+		"esModuleInterop": true,
+		"outDir": "build"
+	},
+	"exclude": ["src/__tests__/*"]
 }

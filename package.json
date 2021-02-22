@@ -4,8 +4,9 @@
   "author": "PSouza-10 <paulosouza300272@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node index.ts",
-    "postinstall": "yarn husky install",
+    "start" : "node build/index.js",
+    "start-dev": "ts-node index.ts",
+    "build":"npx tsc",
     "test": "yarn jest --watch"
   },
   "devDependencies": {
@@ -50,5 +51,8 @@
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-google-oauth2": "^0.2.0"
+  },
+  "engines" : {
+    "node" : "14.15.5"
   }
 }
