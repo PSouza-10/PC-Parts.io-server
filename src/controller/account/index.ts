@@ -9,6 +9,10 @@ const authenticate: RouteController = async (req, res) => {
 	return res.redirect(FRONTEND + `?token=${token}`)
 }
 
+const getInfo: RouteController = async (req, res) => {
+	return res.json(req.user)
+}
 export const account = {
 	authenticate,
+	getInfo,
 }

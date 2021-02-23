@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { account } from '../controller'
 import passport from 'passport'
+import { auth } from '../middleware'
 const router = Router()
 
 router.get(
@@ -12,5 +13,6 @@ router.get(
 	passport.authenticate('google', { session: false }),
 	account.authenticate
 )
+router.get('/', auth, account.getInfo)
 
 export default router

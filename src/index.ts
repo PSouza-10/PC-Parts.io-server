@@ -18,6 +18,7 @@ class App implements IApp {
 	express: Express
 
 	constructor() {
+		console.log(process.env.NODE_ENV)
 		this.express = express()
 
 		this.database()
