@@ -13,6 +13,9 @@ const getInfo: RouteController = async (req, res) => {
 	return res.json(req.user)
 }
 
+const getInfo: RouteController = async (req, res) => {
+	return res.json(req.user)
+}
 export const account = {
 	authenticate,
 	getInfo,

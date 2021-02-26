@@ -13,5 +13,6 @@ router.get(
 	passport.authenticate('google', { session: false }),
 	account.authenticate
 )
+router.get('/', auth, account.getInfo)
 
 export default router
